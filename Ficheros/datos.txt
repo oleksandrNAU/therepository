@@ -1,0 +1,9 @@
+Oleksandr;AD;10
+Ivan;BD;4
+Petro;Programacion;1
+Oleksandr;BD;9
+Oleksandr;Programacion;7
+Ivan;AD;2
+Petro;AD;9
+Petro;BD;4
+Ivan;Programacion;1
