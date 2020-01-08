@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+xmlns:gap   = "http://phonegap.com/ns/1.0"
+id          = "com.oleksandr.calculator"
+versionCode = "1"
+version     = "0.0.1" >
+<name>Calculator!</name>
+<description>
+    Good calculator
+</description>
+<author href="http://www.cursojava2019.best/" email="on4@gcloud.ua.es">
+    Oleksandr Naumov 
+</author>
+<access origin="*" />
+<plugin name="cordova-plugin-whitelist" />
+<plugin name="cordova-plugin-vibration" />
+<preference name="phonegap-version" value="cli-9.0.0"/>
+<platform name="android"></platform>
+</widget>   
