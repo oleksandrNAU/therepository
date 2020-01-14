@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<widget xmlns   = "http://www.w3.org/ns/widgets"
+xmlns:gap   = "http://phonegap.com/ns/1.0"
+id          = "com.oleksandr.lista"
+versionCode = "1"
+version     = "0.0.1" >
+<name>TASK-LIST2020</name>
+<description>
+    Sirve para almacenar las cosas importantes en tu vida 
+</description>
+<author href="http://www.cursojava2019.best/" email="on4@gcloud.ua.es">
+    Oleksandr Naumov 
+</author>
+<access origin="*" />
+<plugin name="cordova-plugin-whitelist" />
+<plugin name="cordova-plugin-vibration" />
+<plugin name="cordova-plugin-x-socialsharing" spec="5.4.0" />
+<preference name="phonegap-version" value="cli-9.0.0"/>
+<platform name="android">
+	<icon qualifier="ldpi" src="android/ldpi/ldpi.png"/>
+</platform>
+</widget>   
