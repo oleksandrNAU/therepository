@@ -1,0 +1,13 @@
+td {
+  vertical-align:middle;
+}
+td:first-child img {
+  height:40px;
+}
+td.impar {
+  color: red;
+}
+
+td.par {
+  color: green;
+}

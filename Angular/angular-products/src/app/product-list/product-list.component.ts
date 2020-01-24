@@ -7,8 +7,13 @@ import { IProduct } from '../interfaces/i-product';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+  showImages = true;
   title = 'Mi lista de productos';
-  headers = {description: 'Producto', price: 'Precio', available: 'Disponible'};
+  headers = {
+  description: 'Producto',
+   price: 'Precio',
+   available: 'Disponible',
+   image: 'Imagen'};
   products: IProduct[] = [{
     id: 1,
     description: 'SSD hard drive',
@@ -24,10 +29,16 @@ export class ProductListComponent implements OnInit {
     imageUrl: 'assets/motherboard.jpg',
     rating: 4
   }];
+  search = '';
+
   constructor() { }
 
   ngOnInit() {
+    console.log('Se ha creado el componente product-list');
   }
+  toggleImage() {
+    this.showImages = !this.showImages;
+   }
 
 }
 
