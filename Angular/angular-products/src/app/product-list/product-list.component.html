@@ -1,47 +1,41 @@
 <div class="card">
   <div class="card-header bg-primary text-white">
     {{title}}
-      </div>
-      <div class="card-block">
-        <form class="form mt-3">
-          <div class="form-group row">
-            <label class="col-form-label col-sm-2 text-sm-right" for="filterDesc">Filtro:</label>
-            <div class="col-sm-5">
-              <input type="text" [(ngModel)]="search" class="form-control" name="filterDesc" id="filterDesc"
-                placeholder="Filter...">
-            </div>
-            <label class="col-form-label col-sm-5">
-              Filtrando por: {{search}}</label>
-          </div>
-        </form>
-
-        <div class="table-responsive" *ngIf="products && products.length">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>
-                  <button class="btn btn-sm"[ngClass]="{'btn-danger': showImage, 'btn-primary': !showImage}" (click)="toggleImage()">
-                     {{showImages?'Ocultar':'Mostrar'}} imagen
-                    </button>
-                  </th>
-                <th>{{headers.description}}</th>
-                <th>{{headers.price}}</th>
-                <th>{{headers.available}}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let product of products | productFilter: search">
-                <td><img [src]="product.imageUrl" *ngIf="showImages" alt=""
-                  [title]="product.description | uppercase"></td>
-                <td>{{product.description}}</td>
-                <td [ngClass]="{'impar': isOdd, 'par': !isOdd}">{{product.price | currency:'EUR':'symbol'}}</td>
-                <td>{{product.available | date:'dd/MM/yyyy'}}</td>
-              </tr>
-            </tbody>
-          </table>
-          </div>
+  </div>
+  <div class="card-block">
+    <form class="form mt-3">
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2 text-sm-right" for="filterDesc">Filtro:</label>
+        <div class="col-sm-5">
+          <input type="text" [(ngModel)]="search" class="form-control" name="filterDesc" id="filterDesc"
+            placeholder="Filter...">
         </div>
-        <ng-template #sinProductos>
-          <p>No hay productos para mostrar</p>
-        </ng-template>
+        <label class="col-form-label col-sm-5">
+          Filtrando por: {{search}}</label>
       </div>
+    </form>
+
+    <div *ngIf="products && products.length; else sinProductos">
+      <div class="row headers no-gutters">
+        <div class="col-2">
+          <button class="btn btn-sm" [ngClass]="{'btn-danger': showImage, 'btn-primary': !showImage}"
+            (click)="mostrarImagenes()">
+            {{showImage?'Hide':'Show'}} images
+          </button></div>
+        <div class="col-4">{{headers.description}}</div>
+        <div class="col">{{headers.price}}</div>
+        <div class="col">{{headers.available}}</div>
+        <div class="col">Puntuación</div>
+      </div>
+      <product-item class="row no-gutters"
+        [product]="product" [showImage]="showImage"
+        *ngFor="let product of products | productFilter:search">
+      </product-item>
+    </div>
+
+
+    <ng-template #sinProductos>
+      <p>No hay productos para mostrar</p>
+    </ng-template>
+  </div>
+</div>

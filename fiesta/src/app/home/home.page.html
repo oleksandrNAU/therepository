@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Fiesta voy
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+  <ion-label >Nombre</ion-label>
+  <ion-input [(ngModel)]="nombre"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label >Apellidos</ion-label>
+  <ion-input [(ngModel)]="apellidos"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label >Edad</ion-label>
+  <ion-input [(ngModel)]="edad"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-label >Traigo</ion-label >
+  <ion-input [(ngModel)]="traes"></ion-input>
+</ion-item>
+<ion-item>
+  <ion-button (click)="enviar()">
+    Enviar
+  </ion-button>
+
+</ion-item>
+</ion-list>
+</ion-content>
