@@ -22,8 +22,13 @@ export class ProductListComponent implements OnInit {
 
   constructor(private productsService: ProductsService) { }
 
-  ngOnInit(): void {
-    this.products = this.productsService.getProducts();
+  ngOnInit() {
+    this.productsService.getProducts().subscribe(
+      resp => {
+        console.log(resp);
+        this.products = resp.products;
+      }
+    );
   }
 
   mostrarImagenes() {
@@ -31,3 +36,4 @@ export class ProductListComponent implements OnInit {
   }
 
 }
+

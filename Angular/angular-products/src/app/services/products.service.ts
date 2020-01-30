@@ -1,29 +1,21 @@
 import { Injectable } from '@angular/core';
 import { IProduct } from '../interfaces/i-product';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ResponseProducts, ResponseRating } from '../interfaces/responses';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getProducts(): IProduct[] {
-    return [{
-      id: 1,
-      description: 'SSD hard drive',
-      available: new Date('2016-10-03'),
-      price: 75,
-      imageUrl: 'assets/ssd.jpg',
-      rating: 5
-    }, {
-      id: 2,
-      description: 'LGA1151 Motherboard',
-      available: new Date('2016-09-15'),
-      price: 96.95,
-      imageUrl: 'assets/motherboard.jpg',
-      rating: 4
-    }];
+  getProducts() {
+    return this.http.get<ResponseProducts>('http://arturober.com:5001/products');
+  }
 
+  changeRating(id: number, rating: number) {
+    return this.http.put<ResponseRating>(`http://arturober.com:5001/products/${id}/rating`, {rating});
   }
 }

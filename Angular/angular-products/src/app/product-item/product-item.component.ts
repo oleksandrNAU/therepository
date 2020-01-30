@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IProduct } from '../interfaces/i-product';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'product-item',
@@ -10,12 +11,14 @@ export class ProductItemComponent implements OnInit {
   @Input() product: IProduct;
   @Input() showImage: boolean;
 
-  constructor() { }
+  constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
   }
 
   changeRating(rating: number) {
-    this.product.rating = rating;
+    this.productsService.changeRating(this.product.id, rating).subscribe(
+      resp => this.product.rating = resp.rating);
+    }
   }
-}
+

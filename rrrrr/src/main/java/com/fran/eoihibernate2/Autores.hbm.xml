@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 29-ene-2020 16:05:53 by Hibernate Tools 5.4.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="com.fran.eoihibernate2.Autores" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="autores">
+        <id name="cod" type="string">
+            <column length="5" name="cod"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
+            <column length="60" name="nombre"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="libros" optimistic-lock="true" sort="unsorted" table="libros">
+            <key on-delete="noaction">
+                <column length="5" name="codautor"/>
+            </key>
+            <one-to-many class="com.fran.eoihibernate2.Libros" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>
