@@ -19,7 +19,7 @@ public class Series implements java.io.Serializable {
 	private Cadenas cadenas;
 	private String nombre;
 	private Integer duracion;
-	private Set<Series> actoreses = new HashSet<Series>(0);
+	private Set<Actores> actoreses = new HashSet<Actores>(0);
 
 	public Series() {
 	}
@@ -28,7 +28,7 @@ public class Series implements java.io.Serializable {
 		this.codSeries = codSeries;
 	}
 
-	public Series(int codSeries, Cadenas cadenas, String nombre, Integer duracion, Set<Series> actoreses) {
+	public Series(int codSeries, Cadenas cadenas, String nombre, Integer duracion, Set<Actores> actoreses) {
 		this.codSeries = codSeries;
 		this.cadenas = cadenas;
 		this.nombre = nombre;
@@ -68,11 +68,11 @@ public class Series implements java.io.Serializable {
 		this.duracion = duracion;
 	}
 
-	public Set<Series> getActoreses() {
+	public Set<Actores> getActoreses() {
 		return this.actoreses;
 	}
 
-	public void setActoreses(Set<Series> actoreses) {
+	public void setActoreses(Set<Actores> actoreses) {
 		this.actoreses = actoreses;
 	}
 

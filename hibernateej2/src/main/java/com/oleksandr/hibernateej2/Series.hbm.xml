@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generated 31-ene-2020 18:11:24 by Hibernate Tools 5.4.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
-    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="Series" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="series">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="com.oleksandr.hibernateej2.Series" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="series">
         <id name="codSeries" type="int">
             <column name="cod_series"/>
             <generator class="assigned"/>
         </id>
-        <many-to-one class="Cadenas" embed-xml="true" fetch="select" insert="true" name="cadenas" not-found="exception" optimistic-lock="true" unique="false" update="true">
+        <many-to-one class="com.oleksandr.hibernateej2.Cadenas" embed-xml="true" fetch="select" insert="true" name="cadenas" not-found="exception" optimistic-lock="true" unique="false" update="true">
             <column length="6" name="cod_cadena"/>
         </many-to-one>
         <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
@@ -19,7 +19,7 @@
             <key on-delete="noaction">
                 <column name="codserie" not-null="true"/>
             </key>
-            <many-to-many embed-xml="true" entity-name="Actores" not-found="exception" unique="false">
+            <many-to-many embed-xml="true" entity-name="com.oleksandr.hibernateej2.Actores" not-found="exception" unique="false">
                 <column name="codactor" not-null="true"/>
             </many-to-many>
         </set>

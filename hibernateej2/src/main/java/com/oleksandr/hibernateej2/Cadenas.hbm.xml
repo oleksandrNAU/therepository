@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generated 31-ene-2020 18:11:24 by Hibernate Tools 5.4.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
-    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="Cadenas" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="cadenas">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="com.oleksandr.hibernateej2.Cadenas" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="cadenas">
         <id name="cod" type="string">
             <column length="6" name="cod"/>
             <generator class="assigned"/>
@@ -13,7 +13,7 @@
             <key on-delete="noaction">
                 <column length="6" name="cod_cadena"/>
             </key>
-            <one-to-many class="Series" embed-xml="true" not-found="exception"/>
+            <one-to-many class="com.oleksandr.hibernateej2.Series" embed-xml="true" not-found="exception"/>
         </set>
     </class>
 </hibernate-mapping>

@@ -18,7 +18,7 @@ public class Actores implements java.io.Serializable {
 	private int id;
 	private String nombre;
 	private String apellidos;
-	private Set<Actores> serieses = new HashSet<Actores>(0);
+	private Set<Series> serieses = new HashSet<Series>(0);
 
 	public Actores() {
 	}
@@ -27,7 +27,7 @@ public class Actores implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Actores(int id, String nombre, String apellidos, Set<Actores> serieses) {
+	public Actores(int id, String nombre, String apellidos, Set<Series> serieses) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -58,11 +58,11 @@ public class Actores implements java.io.Serializable {
 		this.apellidos = apellidos;
 	}
 
-	public Set<Actores> getSerieses() {
+	public Set<Series> getSerieses() {
 		return this.serieses;
 	}
 
-	public void setSerieses(Set<Actores> serieses) {
+	public void setSerieses(Set<Series> serieses) {
 		this.serieses = serieses;
 	}
 

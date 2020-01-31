@@ -12,5 +12,6 @@
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <mapping resource="com/oleksandr/hibernateej2/Cadenas.hbm.xml"/>
   		<mapping resource="com/oleksandr/hibernateej2/Series.hbm.xml"/>
+  		<mapping resource="com/oleksandr/hibernateej2/Actores.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

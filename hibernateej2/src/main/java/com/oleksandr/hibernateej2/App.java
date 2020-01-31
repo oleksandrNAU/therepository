@@ -17,6 +17,7 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.Scanner;
 
+@SuppressWarnings("deprecation")
 public class App 
 {	
 	static SessionFactory sessionFactory = null;
@@ -90,6 +91,33 @@ public static void insertarSerie() {
 	Transaction trans = session.beginTransaction();
 	Series serie = new Series(cod,new Cadenas(cadena), nombre, duracion,null);
 	session.save(serie);
+	trans.commit();
+	// Cerramos la sesión
+	session.close();
+}
+
+public static void insertarActor() {
+	// Crear la conexión con la base de datos
+	Scanner sc2=new Scanner(System.in) ;
+	System.out.println("Introduzca código de actor: ");
+	int cod=sc2.nextInt();	
+	Scanner sc3=new Scanner(System.in) ;
+	System.out.println("Introduzca nombre de actor: ");
+	String nombre=sc3.nextLine();
+	Scanner sc4=new Scanner(System.in) ;
+	System.out.println("Introduzca apellido de actor: ");
+	String apellido=sc4.nextLine();
+	Scanner sc5=new Scanner(System.in) ;
+	System.out.println("Introduzca series que participo actor: ");
+	String duracion=sc5.nextLine();
+	
+	System.out.println(" --------------------------------- ");
+	sessionFactory = new Configuration().configure().buildSessionFactory();
+	session = sessionFactory.openSession();
+	Transaction trans = session.beginTransaction();
+	Series d=new Series();
+	Actores actor = new Actores(cod, nombre, apellido ,);
+	session.save(actor);
 	trans.commit();
 	// Cerramos la sesión
 	session.close();

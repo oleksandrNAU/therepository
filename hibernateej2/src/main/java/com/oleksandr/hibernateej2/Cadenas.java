@@ -17,7 +17,7 @@ public class Cadenas implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private String cod;
 	private String nombre;
-	private Set<Cadenas> serieses = new HashSet<Cadenas>(0);
+	private Set<Series> serieses = new HashSet<Series>(0);
 
 	public Cadenas() {
 	}
@@ -26,7 +26,7 @@ public class Cadenas implements java.io.Serializable {
 		this.cod = cod;
 	}
 
-	public Cadenas(String cod, String nombre, Set<Cadenas> serieses) {
+	public Cadenas(String cod, String nombre, Set<Series> serieses) {
 		this.cod = cod;
 		this.nombre = nombre;
 		this.serieses = serieses;
@@ -48,11 +48,11 @@ public class Cadenas implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	public Set<Cadenas> getSerieses() {
+	public Set<Series> getSerieses() {
 		return this.serieses;
 	}
 
-	public void setSerieses(Set<Cadenas> serieses) {
+	public void setSerieses(Set<Series> serieses) {
 		this.serieses = serieses;
 	}
 
