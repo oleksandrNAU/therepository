@@ -20,6 +20,7 @@ import java.util.Scanner;
 @SuppressWarnings("deprecation")
 public class App 
 {	
+	private static final int Series = 0;
 	static SessionFactory sessionFactory = null;
 	static Session session = null;
 	static int numer;
@@ -85,6 +86,8 @@ public static void insertarSerie() {
 	System.out.println("Introduzca duración de la serie: ");
 	int duracion=sc5.nextInt();
 	
+
+
 	System.out.println(" --------------------------------- ");
 	sessionFactory = new Configuration().configure().buildSessionFactory();
 	session = sessionFactory.openSession();
@@ -98,6 +101,7 @@ public static void insertarSerie() {
 
 public static void insertarActor() {
 	// Crear la conexión con la base de datos
+	Series d=new Series();
 	Scanner sc2=new Scanner(System.in) ;
 	System.out.println("Introduzca código de actor: ");
 	int cod=sc2.nextInt();	
@@ -109,14 +113,19 @@ public static void insertarActor() {
 	String apellido=sc4.nextLine();
 	Scanner sc5=new Scanner(System.in) ;
 	System.out.println("Introduzca series que participo actor: ");
-	String duracion=sc5.nextLine();
-	
+	List<String> duracion=sc5.nextLine();
+
 	System.out.println(" --------------------------------- ");
 	sessionFactory = new Configuration().configure().buildSessionFactory();
 	session = sessionFactory.openSession();
 	Transaction trans = session.beginTransaction();
-	Series d=new Series();
-	Actores actor = new Actores(cod, nombre, apellido ,);
+	
+	Series serie=new Series();
+	Actores actor = new Actores( );
+	actor.setId(cod);
+	actor.setNombre(nombre);
+	actor.setApellidos(apellido);
+	actor.setSerieses(s);
 	session.save(actor);
 	trans.commit();
 	// Cerramos la sesión
