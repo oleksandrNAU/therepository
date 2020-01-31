@@ -1,12 +1,22 @@
+<app-evento-add (eventoAdded)="addEvento($event)"></app-evento-add>
+
+<nav class="navbar navbar-light bg-light justify-content-between mt-3">
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" href="#" (click)="orderDate()">Orden por fecha</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" (click)="orderPrice()">Orden por precio</a>
+    </li>
+  </ul>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="text" [(ngModel)]="search" name="search" placeholder="Search"
+      aria-label="Search">
+  </form>
+</nav>
+
 <div class="card-columns mt-4">
-  <div class="card" *ngFor="let evento of eventos">
-    <div class="card-body">
-      <h4 class="card-title">{{evento.title}}</h4>
-      <p class="card-text">{{evento.description}}</p>
-    </div>
-    <div class="card-footer text-muted">
-      {{evento.date}}
-      <span class="float-right">{{evento.price}}€</span>
-    </div>
-  </div>
+  <app-evento-item [evento]="evento" (deleted)="deleteEvento(evento)"
+  *ngFor="let evento of eventos | eventoFilter:search">
+  </app-evento-item>
 </div>

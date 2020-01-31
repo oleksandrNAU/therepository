@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IProduct } from '../interfaces/i-product';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'product-list',
@@ -7,39 +8,32 @@ import { IProduct } from '../interfaces/i-product';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  showImages = true;
   title = 'Mi lista de productos';
+  showImage = true;
   headers = {
-  description: 'Producto',
-   price: 'Precio',
-   available: 'Disponible',
-   image: 'Imagen'};
-  products: IProduct[] = [{
-    id: 1,
-    description: 'SSD hard drive',
-    available: new Date('2016-10-03'),
-    price: 75,
-    imageUrl: 'assets/ssd.jpg',
-    rating: 5
-  }, {
-    id: 2,
-    description: 'LGA1151 Motherboard',
-    available: new Date('2016-09-15'),
-    price: 96.95,
-    imageUrl: 'assets/motherboard.jpg',
-    rating: 4
-  }];
+    description: 'Descripción',
+    price: 'Precio',
+    available: 'Disponible',
+    image: 'Imagen'
+  };
+  products: IProduct[] = [];
+
   search = '';
 
-  constructor() { }
+  constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
-    console.log('Se ha creado el componente product-list');
+    this.productsService.getProducts().subscribe(
+      resp => {
+        console.log(resp);
+        this.products = resp.products;
+      }
+    );
   }
-  toggleImage() {
-    this.showImages = !this.showImages;
-   }
+
+  mostrarImagenes() {
+    this.showImage = !this.showImage;
+  }
 
 }
-
 
