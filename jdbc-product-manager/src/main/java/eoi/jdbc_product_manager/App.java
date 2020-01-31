@@ -35,7 +35,7 @@ public class App {
 		  System.out.println("4.Salir ");
 		  Integer name = sc.nextInt();
 		  if(name==1) {
-			  ej1();
+		
 			  lanzar();
 		  }
 		  if(name==2) {
