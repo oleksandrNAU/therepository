@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 31-ene-2020 18:11:24 by Hibernate Tools 5.4.7.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class dynamic-insert="false" dynamic-update="false" mutable="true" name="Actores" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="actores">
+        <id name="id" type="int">
+            <column name="id"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="nombre" optimistic-lock="true" type="string" unique="false">
+            <column length="60" name="nombre"/>
+        </property>
+        <property generated="never" lazy="false" name="apellidos" optimistic-lock="true" type="string" unique="false">
+            <column length="60" name="apellidos"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="false" lazy="true" mutable="true" name="serieses" optimistic-lock="true" sort="unsorted" table="actuar">
+            <key on-delete="noaction">
+                <column name="codactor" not-null="true"/>
+            </key>
+            <many-to-many embed-xml="true" entity-name="Series" not-found="exception" unique="false">
+                <column name="codserie" not-null="true"/>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
