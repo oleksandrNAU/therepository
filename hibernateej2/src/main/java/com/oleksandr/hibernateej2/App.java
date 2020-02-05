@@ -26,7 +26,7 @@ public class App
 	static int numer;
 	static Scanner sc=new Scanner(System.in) ;
 	
-	
+	// ver datos serie EJERCICIO 2	
 	
 public static void verSeries() {
 	// probar la conexion
@@ -50,6 +50,8 @@ public static void verSeries() {
 	session.close();
 }
 
+//Crear cadena EJERCICIO 3
+
 public static void insertarCadena() {
 	// Crear la conexión con la base de datos
 	Scanner sc2=new Scanner(System.in) ;
@@ -70,6 +72,8 @@ public static void insertarCadena() {
 	// Cerramos la sesión
 	session.close();
 }
+
+// Crear serie EJERCICIO 4
 
 public static void insertarSerie() {
 	// Crear la conexión con la base de datos
@@ -99,6 +103,8 @@ public static void insertarSerie() {
 	session.close();
 }
 
+//Crear actores   EJERCICIO 9 
+
 public static void insertarActor() {
 	// Crear la conexión con la base de datos
 	Series d=new Series();
@@ -113,24 +119,31 @@ public static void insertarActor() {
 	String apellido=sc4.nextLine();
 	Scanner sc5=new Scanner(System.in) ;
 	System.out.println("Introduzca series que participo actor: ");
-	List<String> duracion=sc5.nextLine();
+	verSeries();
+	int duracion=sc5.nextInt();
 
 	System.out.println(" --------------------------------- ");
 	sessionFactory = new Configuration().configure().buildSessionFactory();
 	session = sessionFactory.openSession();
+	
+	Query consulta = session.createQuery("FROM Series WHERE cod_series='" + duracion + "'");
+    List resultados = consulta.list();
 	Transaction trans = session.beginTransaction();
 	
-	Series serie=new Series();
+    Series serie=(Series) resultados.get(0);
 	Actores actor = new Actores( );
 	actor.setId(cod);
 	actor.setNombre(nombre);
 	actor.setApellidos(apellido);
-	actor.setSerieses(s);
+	actor.getSerieses().add(serie);
+	
 	session.save(actor);
 	trans.commit();
 	// Cerramos la sesión
 	session.close();
 }
+
+//Actualizar serie   EJERCICIO 5 
 
 public static void actualizarSerie() {
 	// Crear la conexión con la base de datos
@@ -159,6 +172,8 @@ public static void actualizarSerie() {
 	session.close();
 }
 
+//Actualizar cadena   EJERCICIO 5 
+
 public static void actualizarCadena() {
 	// Crear la conexión con la base de datos
 	sessionFactory = new Configuration().configure().buildSessionFactory();
@@ -181,6 +196,11 @@ public static void actualizarCadena() {
 	// Cerramos la sesión
 	session.close();
 }
+
+
+
+//Metodo borrar serie EJERCICIO 6 
+
 
 public static void borrarSerie() {
 	// Crear la conexión con la base de datos
@@ -216,6 +236,10 @@ public static void borrarSerie() {
 
 
 
+//Metodo obtener EJERCICIO 7 obtener quitar espacios a los lados de las series funcionalidad TRIM SQL
+
+
+
 public static void borrarEspaciosNombresSeries() {
 // TODO Auto-generated method stub
 	Scanner sc2=new Scanner(System.in) ;
@@ -245,6 +269,34 @@ public static void borrarEspaciosNombresSeries() {
 
 
 
+// Metodo obtener EJERCICIO 10 obtener actores con sus series
+
+public static void verDatosActores() {
+	String nombre = null;
+	sessionFactory = new Configuration().configure().buildSessionFactory();
+	session = sessionFactory.openSession();
+	Scanner sc2=new Scanner(System.in) ;
+	System.out.println("Introduzca código del actor: ");
+	String cod=sc2.next();	
+	
+	
+	Query consulta =  session.createQuery(" from Actores where  id="+cod);
+	List resultados = consulta.list();
+	Actores actor=(Actores) resultados.get(0);
+	for(Series series:actor.getSerieses()){
+		 nombre = series.getNombre();
+	}
+	System.out.println("Datos de actor\n ----------------------- \nNombre y Apellidos: "+actor.getNombre()+" "+actor.getApellidos()+"\n"
+			+"ID: "+actor.getId()+"\n"+
+			"Series que ha participado "+nombre);
+	session.close();
+}
+
+
+
+
+
+
 public static void menu() {
 	boolean salir = false;
 	while(!salir){
@@ -256,6 +308,8 @@ public static void menu() {
 		System.out.println("5. Actualizar nombre cadena");
 		System.out.println("6. Borrar serie");
 		System.out.println("7. Borrar espacios");
+		System.out.println("8. Inserta actor");
+		System.out.println("9. Obtener datos actor");
 		System.out.println("0. Salir");
 		
 		try {
@@ -283,11 +337,17 @@ public static void menu() {
          case 7:
              borrarEspaciosNombresSeries();
              break;
+         case 8:
+             insertarActor();;
+             break;
+         case 9:
+              verDatosActores();
+             break;
          case 0:
             salir=true;
             break;
          default:
-            System.out.println("Solo números entre 0 y 6");
+            System.out.println("Solo números entre 0 y 9");
     }
         
     }

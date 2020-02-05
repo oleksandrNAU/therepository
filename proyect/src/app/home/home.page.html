@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+   <ion-label>Selecciona idioma o el idioma te seleccionara a ti</ion-label>
+    <ion-select [(ngModel)]="sel">
+      
+      <ion-select-option  value="1">Inglés</ion-select-option>
+      <ion-select-option value="2" >Español</ion-select-option>
+      <ion-select-option value="3" >Portugues</ion-select-option>
+      <ion-select-option value="4" >Frances</ion-select-option>
+      <ion-select-option value="5" >Italiano</ion-select-option>
+      <ion-select-option value="6" >Sueco</ion-select-option>
+      <ion-select-option value="7" >Aleman</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <div class="ion-padding">
+  
+ <ion-searchbar debounce='500' [(ngModel)]="busqueda" (ionChange)="search()">
+
+ </ion-searchbar>
+
+  <ion-button (click)="search()">Buscar</ion-button>
+  <ion-list>
+  <ion-item *ngFor="let dato of datos.items" >
+  
+  <ion-label >{{dato.a}}</ion-label>
+  
+
+  </ion-item>
+  
+ 
+</ion-list>
+  </div>
+</ion-content>
