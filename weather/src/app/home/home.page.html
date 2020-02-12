@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+     Obtener temperatura
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+ <div class="ion-padding">
+   <ion-list>
+     <ion-item>
+        <ion-label>Ciudad </ion-label>
+        <ion-input [(ngModel)]='ciudad' minlenght="4"></ion-input>
+     </ion-item>
+   
+  
+   <ion-button (click)='getTiempo()'>Quiero mi Temperatura!!!</ion-button>
+   <ion-button (click)='getTiempo2()'>Quiero mi Temperatura de la Ubicación Actual</ion-button>
+  </ion-list>
+   <ion-list>
+     <ion-item>
+       <ion-label>La temperatura de {{weather.name}} es: {{weather.main.temp|number:'1.2-2'}} ºC </ion-label>
+     </ion-item>
+     <ion-item>
+        <ion-label></ion-label>
+      </ion-item>
+   </ion-list>
+ </div>
+</ion-content>
