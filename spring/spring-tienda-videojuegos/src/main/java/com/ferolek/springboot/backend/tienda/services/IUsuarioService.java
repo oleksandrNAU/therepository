@@ -14,5 +14,9 @@ public interface IUsuarioService {
 	
 	public void delete(Long id);
 	
+	public Usuario existeUsuario(String username, String password);
+	
+	public void delete2(Long usuarios,Long juegos);
+	
 
 }

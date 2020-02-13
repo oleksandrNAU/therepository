@@ -13,8 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ferolek.springboot.backend.tienda.entity.Usuario;
 
 @Entity
@@ -35,10 +34,12 @@ public class Juego implements java.io.Serializable {
 	private String URL;
 	private String imagen;
 	
+	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "usuario_tiene_juegos", schema = "public", joinColumns = {
 			@JoinColumn(name = "juegos", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "usuarios", nullable = false, updatable = false) })
+	@JsonIgnore
 	private Set<Usuario> usuarios = new HashSet<Usuario>(0);
 	
 	public Juego() {

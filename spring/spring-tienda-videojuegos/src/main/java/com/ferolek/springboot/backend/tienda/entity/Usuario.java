@@ -68,6 +68,10 @@ public class Usuario implements Serializable{
 		this.juegos = juegos;
 	}
 	
+	public Usuario(Long id) {
+		this.id = id;
+	}
+	
 	
 	public Long getId() {
 		return id;  

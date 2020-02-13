@@ -1,6 +1,7 @@
 package com.ferolek.springboot.backend.tienda.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,9 @@ public class UsuarioServiceImpl implements IUsuarioService{
 		
 	}
 	
+
+	
+	
 	@Override
 	@Transactional
 	public Usuario save(Usuario usuario) {
@@ -40,4 +44,21 @@ public class UsuarioServiceImpl implements IUsuarioService{
 		usuarioDao.deleteById(id);
 		
 	}
+	
+	@Override
+	@Transactional
+	public Usuario existeUsuario(String username, String password) {
+		return usuarioDao.existeUsuario(username, password).orElse(new Usuario((long) -1.0));
+		
+	}
+	
+	@Override
+	@Transactional
+	public void delete2(Long usuarios,Long juegos) {
+	 	usuarioDao.deleteById2(usuarios,juegos);
+		
+	}
+	
+	
+	
 }
