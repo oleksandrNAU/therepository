@@ -72,7 +72,7 @@ public class UsuarioRestController {
 					response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 					return new ResponseEntity<Map<String,Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 				}
-				response.put("user",user.getJuegos() );
+				response.put("juegos",user.getJuegos() );
 		//		response.put("juego", juegoService.findById(juego.getId()));
 				return new ResponseEntity<Map<String,Object>>(response,HttpStatus.OK);
 				
@@ -146,7 +146,7 @@ public class UsuarioRestController {
 					return new ResponseEntity<Map<String,Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 				}
 				if(usuario==null) {
-					response.put("mensaje", "El cliente ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
+					response.put("mensaje", "El usuario ID: ".concat(id.toString().concat(" no existe en la base de datos!")));
 					return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 				}
 				return new ResponseEntity<Usuario>(usuario,HttpStatus.OK);
